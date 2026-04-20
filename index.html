@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打车时间间隔检查工具</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>打车时间间隔检查</h1>
+
+        <form id="tripForm" class="trip-form">
+            <div class="trip-section">
+                <h2>行程 1</h2>
+                <div class="form-group">
+                    <label for="trip1Origin">出发地</label>
+                    <input type="text" id="trip1Origin" name="trip1Origin" placeholder="请输入出发地地址" value="昌平未来科学城北" required>
+                </div>
+                <div class="form-group">
+                    <label for="trip1Destination">目的地</label>
+                    <input type="text" id="trip1Destination" name="trip1Destination" placeholder="请输入目的地地址" value="物资学院" required>
+                </div>
+            </div>
+
+            <div class="trip-section">
+                <h2>行程 2</h2>
+                <div class="form-group">
+                    <label for="trip2Origin">出发地 <span class="hint">(自动填充行程1目的地)</span></label>
+                    <input type="text" id="trip2Origin" name="trip2Origin" placeholder="请输入出发地地址" value="物资学院" required>
+                </div>
+                <div class="form-group">
+                    <label for="trip2Destination">目的地</label>
+                    <input type="text" id="trip2Destination" name="trip2Destination" placeholder="请输入目的地地址" value="北京首都国际机场" required>
+                </div>
+            </div>
+
+            <div class="form-group interval-group">
+                <label for="interval">可用间隔时间 (分钟)</label>
+                <input type="number" id="interval" name="interval" min="1" placeholder="输入间隔分钟数" value="60" required>
+            </div>
+
+            <button type="submit" id="calculateBtn" class="calculate-btn">计算</button>
+
+            <div id="loading" class="loading hidden">计算中...</div>
+
+            <div id="result" class="result hidden">
+                <h3>计算结果</h3>
+                <div id="resultContent"></div>
+            </div>
+
+            <div id="error" class="error hidden"></div>
+        </form>
+
+        <div id="mapContainer" class="map-container"></div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script>
+        // 动态加载高德地图API
+        function loadGaodeAPI() {
+            const script = document.createElement('script');
+            script.src = `https://webapi.amap.com/maps?v=1.4.15&key=${GAODE_JS_API_KEY}&plugin=AMap.Driving&callback=initAMap`;
+            document.body.appendChild(script);
+        }
+        // 页面加载后加载API
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadGaodeAPI);
+        } else {
+            loadGaodeAPI();
+        }
+    </script>
+    <script src="js/app.js"></script>
+</body>
+</html>

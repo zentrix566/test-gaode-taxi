@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "WebSearch",
+      "WebFetch(domain:lbs.amap.com)"
+    ]
+  }
+}

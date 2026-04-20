@@ -1,0 +1,8 @@
+// 高德地图API Key配置
+// 复制此文件为 config.js 并填入你的API Key
+// config.js 已经在 .gitignore 中，不会提交到Git
+
+// JS API Key (Web端) - 用于地图显示和路线绘制
+const GAODE_JS_API_KEY = 'your_js_api_key_here';
+// Web服务API Key (Web服务) - 用于地理编码和路径规划
+const GAODE_WEB_API_KEY = 'your_web_service_key_here';
